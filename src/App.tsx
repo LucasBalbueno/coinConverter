@@ -1,4 +1,4 @@
-import { HomeConversor } from './components/pages/HomeConversor';
+import { HomeConversor } from './components/HomeConversor';
 
 function App() {
 

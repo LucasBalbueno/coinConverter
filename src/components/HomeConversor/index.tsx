@@ -1,8 +1,32 @@
 import { Container } from "./style"
+import Logo from '../../assets/coinLogo.png'
 
-import Logo from '../../../assets/coinLogo.png'
+import { useState, ChangeEvent, useEffect } from "react"
+import { exchangeCoin } from '../../services/enchangeService'
 
 export const HomeConversor = () => {
+    const [ valueInput, setValueInput ] = useState(1500);
+    const [ selectInputCurrency, setSelectInputCurrency ] = useState('BRL');
+    const [ selectValueCurrency, setSelectValueCurrency ] = useState('USD');
+    const [ valueResponse, setValueResponse ] = useState<number>();
+
+    useEffect(()=> {
+        const result = exchangeCoin(valueInput, selectInputCurrency, selectValueCurrency)
+        setValueResponse(result);
+    }, [valueInput, selectInputCurrency, selectValueCurrency])
+
+    const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+        setValueInput(Number(event.target.value));
+    }
+
+    const handleSelectInputChange = (event: ChangeEvent<HTMLSelectElement>) => {
+        setSelectInputCurrency(event.target.value)
+    }
+
+    const handleSelectValueChange = (event: ChangeEvent<HTMLSelectElement>) => {
+        setSelectValueCurrency(event.target.value)
+    }
+
     return (
         <Container>
             <div className="title">
@@ -12,7 +36,7 @@ export const HomeConversor = () => {
             <div className="pages page1">
                 <div className="containerSelect select1">
                     <p>Digite o valor em</p>
-                    <select>
+                    <select value={selectInputCurrency} onChange={handleSelectInputChange}>
                         <option value="BRL">Real</option>
                         <option value="USD">Dólar</option>
                         <option value="EUR">Euro</option>
@@ -23,14 +47,19 @@ export const HomeConversor = () => {
                 </div>
 
                 <div>
-                    <input className="values valueInput" type="number" defaultValue={1500}/>
+                    <input
+                    className="values valueInput"
+                    type="number"
+                    defaultValue={1500}
+                    onChange={handleInputChange}
+                    />
                     <div className="valueLineInput"></div>
                 </div>
             </div>
             <div className="pages page2">
                 <div className="containerSelect select2">
                     <p>Esse é o valor em</p>
-                    <select>
+                    <select value={selectValueCurrency} onChange={handleSelectValueChange}>
                         <option value="BRL">Real</option>
                         <option value="USD">Dólar</option>
                         <option value="EUR">Euro</option>
@@ -41,7 +70,7 @@ export const HomeConversor = () => {
                 </div>
 
                 <div className="valueResponse">
-                    <span>282,49</span>
+                    <span>{valueResponse}</span>
                     <div className="valueLineResponse"></div>
                 </div>
             </div>

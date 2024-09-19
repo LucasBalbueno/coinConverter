@@ -59,12 +59,11 @@ export const HomeConversor = () => {
                 </div>
 
                 <div className="containerinput">
-                    <p className="symbol">BRL</p>
+                    <p className="symbol">{selectInputCurrency}</p>
                     <div>
                         <input
                         className="values valueInput"
                         type="number"
-                        // maxLength={25}
                         defaultValue={1500}
                         onChange={handleInputChange}
                         onKeyPress={handleKeyPress}
@@ -87,7 +86,7 @@ export const HomeConversor = () => {
                 </div>
 
                 <div className="containerValue">
-                    <p className="symbol">USD</p>
+                    <p className="symbol">{selectValueCurrency}</p>
                     <div className="valueResponse">
                         <span>{valueResponse}</span>
                         <div className="valueLineResponse"></div>

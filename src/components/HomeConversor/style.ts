@@ -65,7 +65,6 @@ export const Container = styled.main`
         
         select {
             width: 9rem;
-            background-color: green;
             border: none;
             border-radius: 5px;
             font-family: "Nunito", sans-serif;
@@ -183,5 +182,75 @@ export const Container = styled.main`
         border-radius: 20px;
         margin-top: .5rem;
         background-color: rgb(254, 254, 227);
+    }
+
+    @media (max-width: 1250px) {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto;
+
+        .title {
+            left: auto;
+            top: 1rem;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .footer {
+            bottom: 1rem;
+            right: auto;
+            width: 100%;
+            text-align: center;
+        }
+
+        .containerSelect {
+            flex-direction: column;
+            
+            select {
+                width: 7rem;
+                background-size: 1rem auto;
+            }
+        }
+
+        .containerinput {
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .values {
+            width: 20rem;
+        }
+
+        .containerValue {
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .valueResponse {
+            width: 20rem;
+        }
+    }
+
+    @media (max-width: 400px) { 
+        .title {
+            display: none;
+        }
+        
+        .footer {
+            display: none;
+        }
+    }
+
+    @media (max-width: 800px) {
+        .containerSelect {
+
+            p {
+                font-size: 25px;
+            }
+            
+            select {
+                font-size: 25px;
+            }
+        }
     }
 `;

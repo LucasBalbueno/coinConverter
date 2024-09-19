@@ -17,20 +17,16 @@ export const HomeConversor = () => {
 
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
         const { value } = event.target;
-        if (/[^0-9.]/.test(value)) {
-            alert('Apenas números e ponto são contabilizados.');
+        if (value === '' || value === '.') {
+            setValueInput(0);
         } else {
-            if (value === '' || value === '.') {
-                setValueInput(0);
-            } else {
-                setValueInput(parseFloat(value));
-            }
+            setValueInput(parseFloat(value));
         }
     }
 
     const handleKeyPress = (event: KeyboardEvent<HTMLInputElement>) => {
-        const { key, currentTarget } = event;
-        if (!/^[0-9.]$/.test(key) || (key === '.' && currentTarget.value.includes('.'))) {
+        const { key } = event;
+        if (!/^[0-9,.]$/.test(key)) {
             event.preventDefault();
         }
     }
@@ -63,12 +59,12 @@ export const HomeConversor = () => {
                 </div>
 
                 <div className="containerinput">
-                <p className="symbol">BRL</p>
+                    <p className="symbol">BRL</p>
                     <div>
                         <input
                         className="values valueInput"
-                        type="text"
-                        maxLength={25}
+                        type="number"
+                        // maxLength={25}
                         defaultValue={1500}
                         onChange={handleInputChange}
                         onKeyPress={handleKeyPress}

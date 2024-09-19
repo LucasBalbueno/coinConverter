@@ -108,7 +108,7 @@ export const Container = styled.main`
 
     .values {
         margin-top: 3rem;
-        width: 17rem;
+        width: 25rem;
         height: 4rem;
         font-size: 60px;
         font-family:  "Nunito", sans-serif;
@@ -121,11 +121,39 @@ export const Container = styled.main`
     
     .valueInput {
         color: rgb(42, 109, 73);
+        margin: 0;
+    }
+
+    .containerinput {
+        display: flex;
+        align-items: center;
+        gap: 5rem;
+        margin-top: 3rem;
+
+        p {
+            color: rgb(42, 109, 73);;
+        }
+    }
+    
+    .containerValue {
+        display: flex;
+        align-items: center;
+        gap: 5rem;
+        margin-top: 3rem;
+
+        p {
+            color: rgb(254, 254, 227);
+        }
+    }
+
+    .symbol {
+        font-size: 40px;
+        font-family:  "Nunito", sans-serif;
+        font-weight: 800;
     }
     
     .valueResponse {
-        margin-top: 3rem;
-        width: 17rem;
+        width: 25rem;
         text-align: center;
         
         span {
@@ -134,6 +162,11 @@ export const Container = styled.main`
             font-weight: 800;
             margin-bottom: 10rem;
             color: rgb(254, 254, 227);
+            max-width: 100vw;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            white-space: normal;
+            word-break: break-all;
         }
     }
     

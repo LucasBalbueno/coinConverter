@@ -1,7 +1,7 @@
 import { Container } from "./style"
 import Logo from '../../assets/coinLogo.png'
 
-import { useState, ChangeEvent, useEffect } from "react"
+import { useState, ChangeEvent, useEffect, KeyboardEvent } from "react"
 import { exchangeCoin } from '../../services/enchangeService'
 
 export const HomeConversor = () => {
@@ -12,11 +12,27 @@ export const HomeConversor = () => {
 
     useEffect(()=> {
         const result = exchangeCoin(valueInput, selectInputCurrency, selectValueCurrency)
-        setValueResponse(result);
+        setValueResponse(parseFloat(result.toFixed(2)));
     }, [valueInput, selectInputCurrency, selectValueCurrency])
 
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-        setValueInput(Number(event.target.value));
+        const { value } = event.target;
+        if (/[^0-9.]/.test(value)) {
+            alert('Apenas números e ponto são contabilizados.');
+        } else {
+            if (value === '' || value === '.') {
+                setValueInput(0);
+            } else {
+                setValueInput(parseFloat(value));
+            }
+        }
+    }
+
+    const handleKeyPress = (event: KeyboardEvent<HTMLInputElement>) => {
+        const { key, currentTarget } = event;
+        if (!/^[0-9.]$/.test(key) || (key === '.' && currentTarget.value.includes('.'))) {
+            event.preventDefault();
+        }
     }
 
     const handleSelectInputChange = (event: ChangeEvent<HTMLSelectElement>) => {
@@ -46,14 +62,19 @@ export const HomeConversor = () => {
                     </select>
                 </div>
 
-                <div>
-                    <input
-                    className="values valueInput"
-                    type="number"
-                    defaultValue={1500}
-                    onChange={handleInputChange}
-                    />
-                    <div className="valueLineInput"></div>
+                <div className="containerinput">
+                <p className="symbol">BRL</p>
+                    <div>
+                        <input
+                        className="values valueInput"
+                        type="text"
+                        maxLength={25}
+                        defaultValue={1500}
+                        onChange={handleInputChange}
+                        onKeyPress={handleKeyPress}
+                        />
+                        <div className="valueLineInput"></div>
+                    </div>
                 </div>
             </div>
             <div className="pages page2">
@@ -69,9 +90,12 @@ export const HomeConversor = () => {
                     </select>
                 </div>
 
-                <div className="valueResponse">
-                    <span>{valueResponse}</span>
-                    <div className="valueLineResponse"></div>
+                <div className="containerValue">
+                    <p className="symbol">USD</p>
+                    <div className="valueResponse">
+                        <span>{valueResponse}</span>
+                        <div className="valueLineResponse"></div>
+                    </div>
                 </div>
             </div>
             <div className="footer">

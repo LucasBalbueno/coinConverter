@@ -1,8 +1,10 @@
+import { HomeConversor } from './components/pages/HomeConversor';
+
 function App() {
 
   return (
     <>
-      <h1>Hello World!</h1>
+      <HomeConversor />
     </>
   )
 }

@@ -1,50 +1,54 @@
-# React + TypeScript + Vite
+# 💱 CoinConverter - Conversor de Moedas
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Bem-vindo ao **CoinConverter**, uma aplicação para converter moedas de forma rápida e precisa. Este projeto foi desenvolvido utilizando tecnologias modernas e cobertura de testes para garantir uma experiência de usuário eficiente, responsiva e assertiva.
 
-Currently, two official plugins are available:
+## 🚀 Tecnologias Utilizadas
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **React**: Biblioteca JavaScript para construção de interfaces de usuário.
+- **TypeScript**: Superset do JavaScript que adiciona tipagem estática ao código.
+- **Vite**: Ferramenta de build extremamente rápida para projetos front-end.
+- **Styled-Components**: Biblioteca para estilização de componentes em React.
+- **Jest**: Para testar funcionalidades do projeto;
+- **Testing-Library**: Para testar elementos da DOM;
 
-## Expanding the ESLint configuration
+## 📋 Funcionalidades
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- Conversão de moedas em tempo real.
+- Suporte a Real, Dólar, Euro, Libra, Franco Suíço e Yuan Chinês com taxas de câmbios cotadas no dia 19/09/2024.
+- Interface intuitiva e fácil de usar.
+- Interface responsiva para uso em dispositivos móveis e desktops.
 
-- Configure the top-level `parserOptions` property like this:
+## 💻 Instruções para executar o projeto
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+**Pré-requisitos:**
+- Node.js (versão 14 ou superior)
+- npm ou yarn
+
+<br>
+
+**Instruções:**
+1. Clone o repositório no seu terminal;
+```bash
+git clone https://github.com/LucasBalbueno/ListContact.git
+````
+<br>
+
+2. Abra a sua IDE na pasta clonado e instale as dependências;
+```bash
+# Usando npm
+npm install
+
+# Usando yarn
+yarn install
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+<br>
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+3. Execute a aplicação e abra o link de execução;
+```bash
+# Usando npm
+npm run dev
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+# Usando yarn
+yarn dev
 ```
